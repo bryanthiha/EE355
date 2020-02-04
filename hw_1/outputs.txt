@@ -1,0 +1,64 @@
+Bryan Thiha
+
+This file consists of the outputs for all the programs
+
+Q2)
+      1
+      3
+      7
+      14
+      19
+      
+Q3)   Input String: hello
+      Input String: world
+      Input String: world
+      Input String: bryan
+      Input String: done
+      ['hello', 'world', 'world', 'bryan']
+      Search for: world
+      1
+      2
+      
+ 
+Q4)   6
+      30
+      44
+      20
+      
+
+Q10) First scenario:
+     Program prints out all elements in array greater than 2 and their 
+     indices.
+      5
+      0
+      6
+      2
+      13
+      3
+
+   When print statement is moved out of if statement, it still prints
+   elements greater than 2, but now prints every index of array.
+   
+      5
+      0
+      1
+      6
+      2
+      13
+      3
+      4
+      
+   
+      Second Scenario:
+      Program checks if user input x is greater than 5. If so, adds 6 
+      then checks if less than 15. If not, subtracts 5, then prints x.
+      If so, prints x, then checks if greater than 13. If so,
+      prints arrived. If user inputs 6, this is output:
+      12
+      
+      By changing the else statement connected to the middle if statement 
+      that checks if less than 15, to the inner most nested if statement,
+      if user inputs 6, this is what we get:
+      12
+      7
+     
