@@ -1,0 +1,10 @@
+
+Bryan Thiha
+6002228585
+
+thiha@usc.edu
+
+The C program takes in three input arguments to calculate the sum of two numbers squared plus an error value which is generated randomly.
+The python progam genrates three random values and calls the C program to input those values while calculating an error free result as well. Then we take the absolute value of the difference and write those values into a file.
+
+Overall, I did not have any issues with this lab, it was mostly trying to review C syntax. The only issue I ran into was trying to get the syntax correct for the check_output function to link the python and c program. After a few trial and errors, I was able to solve this issue.

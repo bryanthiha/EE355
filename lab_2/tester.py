@@ -1,12 +1,12 @@
+# Bryan Thiha 	6002228585
+
 import sys
 import subprocess
 from random import *
 
 
-#z_list = []
-
-with open("results.txt", "w") as f:
-	
+with open("results.txt", "w") as f:						# openning file to write to
+														# 'with' is good practice because it closes for you automatically
 	for i in range(10000):
 
 		x = uniform(-100, 100)
@@ -17,7 +17,6 @@ with open("results.txt", "w") as f:
 		Zcomputed = (x*x) + (y*y)
 
 		Zblackbox = float(subprocess.check_output(["./blackbox", str(x), str(y), str(d)]))	
-		#print(x,y,d)
 
 		difference = abs(Zcomputed - Zblackbox)
 
@@ -25,10 +24,3 @@ with open("results.txt", "w") as f:
 
 
 
-	#z_list.append(difference)
-	#print(difference)
-
-# with open("results.txt", "w") as f:
-# 	for j in range(len(z_list)):
-
-# 		f.write("  %s\n" % z_list[j])
