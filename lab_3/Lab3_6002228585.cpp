@@ -30,6 +30,7 @@ class NumberSet
 		bool check_independence(NumberSet obj)
 		{
 			bool output = true;
+
 			for(int i = 0; i < 10; i++)
 			{
 				for(int j = 0; j < 10; j++)
@@ -40,10 +41,9 @@ class NumberSet
 					}
 				}
 			}
+
+			return output;
 		}
-
-
-
 
 
 
@@ -51,21 +51,54 @@ class NumberSet
 
 int main()
 {
-	NumberSet a, b;
-
+	//NumberSet a, b;
+	string out = "Yes sir";
+	int b;
 	NumberSet set_array[20];
+	int x;
 
-	int a[10];
-	int x, y, z;
 	ifstream infile;	
-	infile.open("input.txt");
+	infile.open("input2.txt");
 
-	for(int i = 0; i < 20; i++)	
+	for(int i = 0; i < 20; i++)
 	{
-		infile >> a[i];
-		cout << a[i] << endl;
-	}	
+		for(int j = 0; j < 10; j++)
+		{
+			infile >> x;
+
+			set_array[i].num_array[j].set_value(x);
+
+			cout << " " << set_array[i].num_array[j].get_value();
+		}
+
+		cout << endl;
+	}
+
 	infile.close();
+
+
+	for(int k = 0; k < 19; k++)
+	{
+		for(int m = k + 1; m < 20; m++)
+		{	
+			b = set_array[k].check_independence(set_array[m]);
+			cout << b << endl;
+
+			if(b == false)
+			{
+				out = "No sir";
+			}
+		}
+
+	}
+
+	cout << out << endl;
+
+	ofstream outfile;	
+	outfile.open("output.txt");	
+	outfile << out;
+	
+	outfile.close();
 
 
 	
