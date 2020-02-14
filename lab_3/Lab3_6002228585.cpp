@@ -1,3 +1,8 @@
+// Bryan Thiha 	
+// 6002228585
+// 02/12/20
+
+
 #include <iostream>
 #include <fstream>
 
@@ -22,16 +27,21 @@ class Number
 
 };
 
+
+
 class NumberSet
 {
+	
 	public:
 		Number num_array[10];
 
+
 		bool check_independence(NumberSet obj)
 		{
+			
 			bool output = true;
 
-			for(int i = 0; i < 10; i++)
+			for(int i = 0; i < 10; i++)											//Checking every index of both arrays
 			{
 				for(int j = 0; j < 10; j++)
 				{
@@ -42,64 +52,65 @@ class NumberSet
 				}
 			}
 
-			return output;
+			return output;										// will return true IFF all pairs are independent, else false
+
 		}
-
-
 
 };
 
+
+
 int main()
 {
-	//NumberSet a, b;
-	string out = "Yes sir";
-	int b;
+	
 	NumberSet set_array[20];
-	int x;
+
+	string message = "Y";
+	int entry;
+	int independent;
+
 
 	ifstream infile;	
-	infile.open("input2.txt");
+	infile.open("input.txt");
+
 
 	for(int i = 0; i < 20; i++)
 	{
 		for(int j = 0; j < 10; j++)
 		{
-			infile >> x;
-
-			set_array[i].num_array[j].set_value(x);
-
-			cout << " " << set_array[i].num_array[j].get_value();
+			
+			infile >> entry;
+																	// Storing all numbers into an array 
+			set_array[i].num_array[j].set_value(entry);
 		}
 
-		cout << endl;
 	}
 
 	infile.close();
+
 
 
 	for(int k = 0; k < 19; k++)
 	{
 		for(int m = k + 1; m < 20; m++)
 		{	
-			b = set_array[k].check_independence(set_array[m]);
-			cout << b << endl;
+			
+			independent = set_array[k].check_independence(set_array[m]);
 
-			if(b == false)
+			if(independent == false)
 			{
-				out = "No sir";
+				message = "N";
 			}
 		}
 
 	}
 
-	cout << out << endl;
 
 	ofstream outfile;	
-	outfile.open("output.txt");	
-	outfile << out;
+	outfile.open("output.txt");
+
+	outfile << message;
 	
 	outfile.close();
-
-
 	
 }
