@@ -32,7 +32,7 @@ class matrix
 		}
 
 		
-		void sort_row(matrix* M, int a)
+		void sort_row(matrix* Matrix, int a)
 		{
 			int number;
 
@@ -40,20 +40,20 @@ class matrix
 
 			while(count < 7)
 			{	
-				number = M->value[a][0];
+				number = Matrix->value[a][0];
 
 				for(int j = 0; j < 9; j++)
 				{
-					if(M->value[a][j+1] < number) 
+					if(Matrix->value[a][j+1] < number) 
 					{
 
-						M->value[a][j] = M->value[a][j+1];
+						Matrix->value[a][j] = Matrix->value[a][j+1];
 						
 
-						M->value[a][j+1] = number;
+						Matrix->value[a][j+1] = number;
 					}
 
-					number = M->value[a][j+1];
+					number = Matrix->value[a][j+1];
 				
 				}
 				count++;
@@ -98,7 +98,7 @@ int main()
 
 	matrix array;
 	int entry, z;
-	int sub_array[10];
+	
 
 	ifstream infile;	
 	infile.open("input.txt");
@@ -113,18 +113,23 @@ int main()
 																	// Storing all numbers into an array 
 			array.value[i][j] = entry;
 
-			//cout << array.value[i][j] << " ";
+			cout << array.value[i][j] << " ";
 		}
 
-		//cout << endl;
+		cout << endl;
 
 	}
 
 	infile.close();
+	cout << endl;
+
+
 
 	z = array.linear_search(array);
 
-	cout << z << endl;
+	cout << "First num found in row: " << z << endl;
+
+
 
 	for(int k = 0; k < 10; k++)
 	{
@@ -132,30 +137,38 @@ int main()
 		cout << array.value[z][k] << " ";
 	}
 
-	cout << endl;
+	cout << endl << endl;
+
+
 
 	array.sort_row(&array, z);
 
+
 	for(int k = 0; k < 10; k++)
 	{
-		sub_array[k] = array.value[z][k];
 
 		cout << array.value[z][k] << " ";
 
 	}
+	cout << endl << endl;
+
+
+	for(int i = 0; i < 20; i++)
+	{
+		for(int j = 0; j < 10; j++)
+		{
+			cout << array.value[i][j] << " ";
+		}
+
+		cout << endl;
+
+	}
+
 	cout << endl;
 
-
-	// for(int k = 0; k < 10; k++)
-	// {
-
-	// 	cout << sub_array[k] << " ";
-	// }
-
-	// cout << endl;
-
 	int b = array.binary_search(array,z);
-	cout << b << endl;
+
+	cout << "Index from binary search: " << b << endl;
 }
 
 
