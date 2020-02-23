@@ -1,6 +1,6 @@
 // Bryan Thiha 	
 // 6002228585
-// 02/19/20
+// 02/24/20
 
 
 #include <iostream>
@@ -14,8 +14,10 @@ class matrix
 
 	public:
 		int value[20][10];
+
 		int iteration_time;
 		int binary_iterate;
+
 
 		int linear_search(matrix Matrix)
 		{
@@ -37,10 +39,6 @@ class matrix
 			}
 		}
 
-		int row_index(matrix Matrix)
-		{
-			int x = (linear_search(Matrix))/10;
-		}
 		
 		void sort_row(matrix* Matrix, int a)
 		{
@@ -71,6 +69,7 @@ class matrix
 				
 		}
 
+
 		int binary_search(matrix Matrix, int a)
 		{
 			int first_num = Matrix.value[0][0];
@@ -100,6 +99,8 @@ class matrix
 			}
 			
 		}
+
+
 		int iteration_count()
 		{
 			return iteration_time;
@@ -113,6 +114,7 @@ class matrix
 
 		
 };
+
 
 
 int main()
@@ -145,31 +147,27 @@ int main()
 	infile.close();
 
 
-	row_index = array.linear_search(array);
 
-	cout << "First num found in row: " << row_index << endl;
+	row_index = array.linear_search(array);
 
 	
 	num_iterations = array.iteration_count();
 
-	cout << num_iterations << endl;
-
-
+	
 	array.sort_row(&array, row_index);
 
 
 	binary_index = array.binary_search(array,row_index);
 
-	cout << "index from binary search: " << binary_index << endl;
 
 	bin_iterate = array.binary_slice();
 
-	cout << "interation time from binary search: " << bin_iterate << endl;
-
+	
 
 
 	ofstream outfile;	
 	outfile.open("output.txt");
+
 
 	outfile << "Iteration number of linear search for FirstNum: " << num_iterations << endl << endl;
 	outfile << "The sorted row including the element FirstNum: ";
@@ -189,14 +187,3 @@ int main()
 
 }
 
-
-
-// 391 42 536 99 683 779 718 968 661 193
-
-// 42 391 99 536 683 718 779 661 193 968
-
-// 42 99 391 536 683 718 661 193 779 968
-
-// 42 99 391 536 683 661 193 718 779 968
-
-// 42 99 391 536 661 193 683 718 779 968
