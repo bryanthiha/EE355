@@ -14,15 +14,21 @@ class matrix
 
 	public:
 		int value[20][10];
+		int iteration_time;
+		int binary_iterate;
 
 		int linear_search(matrix Matrix)
 		{
 			int first_num = Matrix.value[0][0];
 
+			iteration_time = 0;
+
 			for(int i = 0; i < 20; i++)											//Checking every index of both arrays
 			{
 				for(int j = 0; j < 10; j++)
 				{
+					iteration_time++;
+
 					if(Matrix.value[i][j] == first_num && (i != 0))
 					{
 						return i;
@@ -31,6 +37,10 @@ class matrix
 			}
 		}
 
+		int row_index(matrix Matrix)
+		{
+			int x = (linear_search(Matrix))/10;
+		}
 		
 		void sort_row(matrix* Matrix, int a)
 		{
@@ -68,6 +78,7 @@ class matrix
 			int low = 0;
 			int high = 10;
 			int mid;
+			binary_iterate = 0;
 
 			while(low <= high)
 			{
@@ -85,8 +96,19 @@ class matrix
 				{
 					return mid;
 				}
+				binary_iterate++;
 			}
 			
+		}
+		int iteration_count()
+		{
+			return iteration_time;
+		}
+
+
+		int binary_slice()
+		{
+			return binary_iterate;
 		}
 
 		
@@ -97,7 +119,10 @@ int main()
 {
 
 	matrix array;
-	int entry, z;
+
+	int entry, row_index, num_iterations;
+
+	int binary_index, bin_iterate;
 	
 
 	ifstream infile;	
@@ -113,62 +138,55 @@ int main()
 																	// Storing all numbers into an array 
 			array.value[i][j] = entry;
 
-			cout << array.value[i][j] << " ";
 		}
-
-		cout << endl;
 
 	}
 
 	infile.close();
-	cout << endl;
+
+
+	row_index = array.linear_search(array);
+
+	cout << "First num found in row: " << row_index << endl;
+
+	
+	num_iterations = array.iteration_count();
+
+	cout << num_iterations << endl;
+
+
+	array.sort_row(&array, row_index);
+
+
+	binary_index = array.binary_search(array,row_index);
+
+	cout << "index from binary search: " << binary_index << endl;
+
+	bin_iterate = array.binary_slice();
+
+	cout << "interation time from binary search: " << bin_iterate << endl;
 
 
 
-	z = array.linear_search(array);
+	ofstream outfile;	
+	outfile.open("output.txt");
 
-	cout << "First num found in row: " << z << endl;
-
-
+	outfile << "Iteration number of linear search for FirstNum: " << num_iterations << endl << endl;
+	outfile << "The sorted row including the element FirstNum: ";
 
 	for(int k = 0; k < 10; k++)
 	{
 
-		cout << array.value[z][k] << " ";
-	}
-
-	cout << endl << endl;
-
-
-
-	array.sort_row(&array, z);
-
-
-	for(int k = 0; k < 10; k++)
-	{
-
-		cout << array.value[z][k] << " ";
-
-	}
-	cout << endl << endl;
-
-
-	for(int i = 0; i < 20; i++)
-	{
-		for(int j = 0; j < 10; j++)
-		{
-			cout << array.value[i][j] << " ";
-		}
-
-		cout << endl;
+		outfile << array.value[row_index][k] << " ";
 
 	}
 
-	cout << endl;
+	outfile << endl << endl << "The index of FirstNum obtained from the binary search: " << binary_index << endl << endl;
 
-	int b = array.binary_search(array,z);
+	outfile << "The iteration time of using the binary search: " << bin_iterate;
+	
+	outfile.close();
 
-	cout << "Index from binary search: " << b << endl;
 }
 
 
