@@ -19,39 +19,49 @@ class matrix
 		int binary_iterate;
 
 
+
 		int linear_search(matrix Matrix)
 		{
+			
 			int first_num = Matrix.value[0][0];
 
 			iteration_time = 0;
 
-			for(int i = 0; i < 20; i++)											//Checking every index of both arrays
+
+			for(int i = 0; i < 20; i++)											// Checking every index
 			{
 				for(int j = 0; j < 10; j++)
 				{
+					
 					iteration_time++;
 
 					if(Matrix.value[i][j] == first_num && (i != 0))
 					{
-						return i;
+						return i;												// returns row index
 					}
 				}
 			}
 		}
 
 		
+
 		void sort_row(matrix* Matrix, int a)
 		{
+			
 			int number;
 
 			int count = 0;
 
+
 			while(count < 7)
 			{	
+				
 				number = Matrix->value[a][0];
 
+				
 				for(int j = 0; j < 9; j++)
 				{
+					
 					if(Matrix->value[a][j+1] < number) 
 					{
 
@@ -70,46 +80,53 @@ class matrix
 		}
 
 
+
 		int binary_search(matrix Matrix, int a)
 		{
+			
 			int first_num = Matrix.value[0][0];
 
-			int low = 0;
-			int high = 10;
+			int bottom = 0;
+			int top = 10;
 			int mid;
+
 			binary_iterate = 0;
 
-			while(low <= high)
+
+			while(bottom <= top)
 			{
-				mid = (low + high)/2;
+				
+				mid = (bottom + top)/2;
 
 				if(Matrix.value[a][mid] > first_num)
 				{
-					high = mid - 1;
+					top = mid - 1;
 				}
 				else if(Matrix.value[a][mid] < first_num)
 				{
-					low = mid + 1;
+					bottom = mid + 1;
 				}
 				else
 				{
 					return mid;
 				}
+
 				binary_iterate++;
 			}
 			
 		}
 
 
+
 		int iteration_count()
 		{
-			return iteration_time;
+			return iteration_time;				// returns linear search iteration
 		}
 
 
 		int binary_slice()
 		{
-			return binary_iterate;
+			return binary_iterate;				// returns binary search iteration
 		}
 
 		
@@ -137,7 +154,7 @@ int main()
 		{
 			
 			infile >> entry;
-																	// Storing all numbers into an array 
+																	// Storing all numbers into array 
 			array.value[i][j] = entry;
 
 		}
