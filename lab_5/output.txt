@@ -1,0 +1,5 @@
+Kanye West Object has been constructed
+Kourosh Yaghmaei Object has been constructed 
+KW's profit for Z number of weeks in average is estimated $5007, out of which 30%, i.e., $1502 is KY's.
+Kourosh Yaghmaei Object has been destructed 
+Kanye West Object has been destructed 
