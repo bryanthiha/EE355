@@ -1,0 +1,148 @@
+	FIRST TRY WITH RUN AND CONTINUE
+	PROGRAM DETERMINED A SEG FAULT
+
+(gdb) run
+Starting program: /home/student/github/EE355/lab_7/lab7 
+Please enter n: 3
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000000000400a40 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+24	        return  factorial(n--)*n;
+
+(gdb) c
+Continuing.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+
+(gdb) break factorial
+Breakpoint 1 at 0x400a2f: file brokengdb1_6002228585.cpp, line 22.
+(gdb) c
+Continuing.
+
+
+
+
+
+		TRIED OUT OTHER COMMANDS TO TEST WHAT LINE ERROR WAS IN
+		LINE 22 WAS ERROR.
+
+Starting program: /home/student/github/EE355/lab_7/lab7 
+Please enter n: 3
+
+Breakpoint 1, factorial (n=3) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) print n
+$1 = 3
+(gdb) p n
+$2 = 3
+(gdb) next
+24	        return  factorial(n--)*n;
+(gdb) n
+
+Breakpoint 1, factorial (n=3) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) p n
+$3 = 3
+(gdb) next
+24	        return  factorial(n--)*n;
+(gdb) p n
+$4 = 3
+
+Breakpoint 1, factorial (n=3) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (n=3) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) n
+24	        return  factorial(n--)*n;
+(gdb) p n
+$5 = 3
+(gdb) bt
+#0  factorial (n=3) at brokengdb1_6002228585.cpp:24
+#1  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#2  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#3  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#4  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#5  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#6  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#7  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#8  0x00000000004009d7 in main () at brokengdb1_6002228585.cpp:13
+(gdb) p n
+$6 = 3
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (n=3) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) bt
+#0  factorial (n=3) at brokengdb1_6002228585.cpp:22
+#1  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#2  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#3  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#4  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#5  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#6  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#7  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#8  0x0000000000400a45 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#9  0x00000000004009d7 in main () at brokengdb1_6002228585.cpp:13
+(gdb) print n
+$7 = 3
+
+
+
+
+
+	TRIAL AGAIN AFTER ERROR HAD BEEN CORRECTED. 
+	TESTED VALUE OF n BEFORE AND AFTER ERRORED LINE
+
+
+Reading symbols from lab7...done.
+(gdb) break factorial
+Breakpoint 1 at 0x400a2f: file brokengdb1_6002228585.cpp, line 22.
+(gdb) run
+Starting program: /home/student/github/EE355/lab_7/lab7 
+Please enter n: 3
+
+Breakpoint 1, factorial (n=3) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) p n
+$1 = 3
+(gdb) s
+24	        return  factorial(n-1)*n;
+(gdb) p n
+$2 = 3
+(gdb) n
+
+Breakpoint 1, factorial (n=2) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) p n
+$3 = 2
+(gdb) c
+Continuing.
+
+Breakpoint 1, factorial (n=1) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) p n
+$4 = 1
+(gdb) bt
+#0  factorial (n=1) at brokengdb1_6002228585.cpp:22
+#1  0x0000000000400a42 in factorial (n=2) at brokengdb1_6002228585.cpp:24
+#2  0x0000000000400a42 in factorial (n=3) at brokengdb1_6002228585.cpp:24
+#3  0x00000000004009d7 in main () at brokengdb1_6002228585.cpp:13
+(gdb) p n
+$5 = 1
+(gdb) c 
+Continuing.
+
+Breakpoint 1, factorial (n=0) at brokengdb1_6002228585.cpp:22
+22	    if(n)
+(gdb) p n
+$6 = 0
+(gdb) c
+Continuing.
+n factorial is: 6
+[Inferior 1 (process 4064) exited normally]
+(gdb) 

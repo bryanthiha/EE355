@@ -1,0 +1,116 @@
+==4948==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffeaf33a388 at pc 0x000000400a14 bp 0x7ffeaf33a2d0 sp 0x7ffeaf33a2c0
+READ of size 4 at 0x7ffeaf33a388 thread T0
+    #0 0x400a13 in partition(int*, int, int) /home/student/github/EE355/lab_7/BrokenASan.cpp:5
+    #1 0x400d63 in quickSort(int*, int, int) /home/student/github/EE355/lab_7/BrokenASan.cpp:30
+    #2 0x400f04 in main /home/student/github/EE355/lab_7/BrokenASan.cpp:50
+    #3 0x7f8958e5a82f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #4 0x4008e8 in _start (/home/student/github/EE355/lab_7/asan+0x4008e8)
+
+Address 0x7ffeaf33a388 is located in stack of thread T0 at offset 56 in frame
+    #0 0x400e37 in main /home/student/github/EE355/lab_7/BrokenASan.cpp:47
+
+  This frame has 1 object(s):
+    [32, 56) 'arr' <== Memory access at offset 56 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/student/github/EE355/lab_7/BrokenASan.cpp:5 partition(int*, int, int)
+Shadow bytes around the buggy address:
+  0x100055e5f420: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f430: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f440: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f450: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f460: 00 00 00 00 00 00 00 00 00 00 f1 f1 f1 f1 00 00
+=>0x100055e5f470: 00[f4]f3 f3 f3 f3 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f490: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f4a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f4b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100055e5f4c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==4948==ABORTING
+
+
+ERROR ABOVE IN LINE 5, 30, AND 50
+  FUNCTION CALLS REFERRING TO SIZE OF ARR ERRORED
+
+
+
+
+==4245==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffe2771fda8 at pc 0x000000400e02 bp 0x7ffe2771fd20 sp 0x7ffe2771fd10
+READ of size 4 at 0x7ffe2771fda8 thread T0
+    #0 0x400e01 in printArray(int*, int) /home/student/github/EE355/lab_7/BrokenASan.cpp:41
+    #1 0x400f2b in main /home/student/github/EE355/lab_7/BrokenASan.cpp:52
+    #2 0x7f06d365682f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x2082f)
+    #3 0x4008e8 in _start (/home/student/github/EE355/lab_7/asan+0x4008e8)
+
+Address 0x7ffe2771fda8 is located in stack of thread T0 at offset 56 in frame
+    #0 0x400e37 in main /home/student/github/EE355/lab_7/BrokenASan.cpp:47
+
+  This frame has 1 object(s):
+    [32, 56) 'arr' <== Memory access at offset 56 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism or swapcontext
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow /home/student/github/EE355/lab_7/BrokenASan.cpp:41 printArray(int*, int)
+Shadow bytes around the buggy address:
+  0x100044edbf60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edbf70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edbf80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edbf90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edbfa0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f1 f1
+=>0x100044edbfb0: f1 f1 00 00 00[f4]f3 f3 f3 f3 00 00 00 00 00 00
+  0x100044edbfc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edbfd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edbfe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edbff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x100044edc000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+==4245==ABORTING
+
+FIXED PARAMETER OF QUICK SORT FROM SIZE N TO N-1
+
+ERROR ABOVE IN LINE 41 AND 52
+  PRINT ARRAY FUNCTION ERRORED
+
+
+
+
+
+AFTER PRINT ARRAY FUNCTION PARAMETER FIXED FROM SIZE N TO N-1
+
+  Sorted array: n1 5 7 8 9 10 n
