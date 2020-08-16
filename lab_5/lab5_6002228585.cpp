@@ -201,3 +201,10 @@ int main()
 	outfile << "KW's profit for Z number of weeks in average is estimated $" << kanye_avg_profit << ", out of which " << percentage << "%, " << "i.e., $" << kourosh_avg_profit << " is KY's." << endl;
 
 }
+
+//cout << kw_profit.C_value(Z) << endl;
+
+//cout << kw_profit.P_value(Z, f1, f2, f3) << endl;
+
+//cout << kw_profit.GetProfit() << endl;
+//cout << ky_profit.GetProfit() << endl;

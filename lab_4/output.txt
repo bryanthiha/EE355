@@ -1,0 +1,7 @@
+Iteration number of linear search for FirstNum: 1
+
+The sorted row including the element FirstNum: 99 152 202 310 486 491 620 698 785 984 
+
+The index of FirstNum obtained from the binary search: 0
+
+The iteration time of using the binary search: 2

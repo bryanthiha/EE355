@@ -1,6 +1,6 @@
 // Bryan Thiha 	
 // 6002228585
-// 03/23/20
+// 04/01/20
 
 
 #include <iostream>
@@ -13,6 +13,9 @@
 #include <algorithm>
 
 using namespace std;
+
+// delete dynamic memory, change variable names, beautify spacing, transfer to classroom got and then tame out unnecessary, 
+//look into not hardcoding 10
 
 void read_file()
 {

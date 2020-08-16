@@ -63,7 +63,7 @@ class NumberSet
 int main()
 {
 	
-	NumberSet set_array[20];
+	NumberSet NumberSet[20];
 
 	string message = "Y";
 	int entry;
@@ -71,7 +71,7 @@ int main()
 
 
 	ifstream infile;	
-	infile.open("input.txt");
+	infile.open("input2.txt");
 
 
 	for(int i = 0; i < 20; i++)
@@ -81,7 +81,7 @@ int main()
 			
 			infile >> entry;
 																	// Storing all numbers into an array 
-			set_array[i].num_array[j].set_value(entry);
+			NumberSet[i].num_array[j].set_value(entry);
 		}
 
 	}
@@ -95,7 +95,7 @@ int main()
 		for(int m = k + 1; m < 20; m++)
 		{	
 			
-			independent = set_array[k].check_independence(set_array[m]);
+			independent = NumberSet[k].check_independence(NumberSet[m]);
 
 			if(independent == false)
 			{
